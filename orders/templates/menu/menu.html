@@ -1,0 +1,32 @@
+{% extends "order/base.html" %}
+{% block title %}
+    Menu
+{% endblock %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<div class="img">
+  <img src="{% static 'menu.jpg' %}">
+</div>
+<h1>MENU</h1>
+<h2>You also have varied toppings, addon choices if you choose a pizza or sub</h2>
+<p><a href="{% url 'category' %}">Start ordering</a></p>
+<ul>
+  {% for item in items %}
+    <li>
+        Item Name : {{ item.name }} | Type : {{ item.type }} | Size : {{ item.size }} | Price : {{ item.price }}
+    </li>
+  {% endfor %}
+  {% for addon in addons %}
+    <li>
+        Addon Name : {{ addon.addons_name }}
+    </li>
+  {% endfor %}
+  {% for topping in toppings %}
+    <li>
+        Topping Name : {{ topping.name }}
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'logout' %}">Logout</a></li>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "order/base.html" %}
+{% block title %}
+    Choice of food
+{% endblock %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<p>Choose options<br></p>
+<form action="{% url 'cart' %}" method="post">
+  {% csrf_token %}
+  Item Name :
+  <select name="name">
+    {% for name in name %}
+      <option value="{{ name }}">{{ name }}</option>
+    {% endfor %}
+  </select>
+  <br><br>
+  Item Size :
+  <select name="size">
+    {% for size in size %}
+      <option value="{{ size }}">{{ size }}</option>
+    {% endfor %}
+  </select>
+  <br><br>
+  Item Type :
+  <select name="type">
+    {% for type in type %}
+      <option value="{{ type }}">{{ type }}</option>
+      {% endfor %}
+    </select>
+  <br><br>
+  Toppings (only for pizzas) :
+  <select multiple="true" name="toppings">
+    {% for topping in toppings %}
+      <option value="{{ topping.name }}" type="checkbox">{{ topping.name }}</option>
+    {% endfor %}
+  </select>
+  <br><br>
+  Addons (only for subs) :
+  <select multiple="true" name="addons">
+    {% for addon in addons %}
+      <option value="{{ addon.addons_name }}" type="checkbox">{{ addon.addons_name }}</option>
+    {% endfor %}
+  </select>
+  <br><br>
+  <input type="submit" value="Add to Cart"/>
+</form>
+<br>
+<a href="{% url 'logout' %}">Logout</a></li>
+
+{% endblock %}

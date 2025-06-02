@@ -1,0 +1,18 @@
+{% extends "users/base.html" %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<h1>LOGIN</h1>
+{% if message %}
+    <div>
+        {{ message }}
+    </div>
+{% endif %}
+<br>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    Username : <input name="username" type="text"/>
+    Password : <input name="password" type="password"/>
+    <input type="submit" value="Login"/>
+</form>
+{% endblock %}

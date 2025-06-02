@@ -1,0 +1,16 @@
+{% extends "order/base.html" %}
+{% block title %}
+    Orders View for the Admin
+{% endblock %}
+{% block body %}
+{% if user.is_staff %}
+<ul>
+    {% for order in orders %}
+      <li>
+        Username : {{ order.user_name }} | Order Status : {{ order.order_status }} | Item Name : {{ order.name }} | Type : {{ order.type }} | Size : {{ order.size }} | Price : {{ order.price }}
+        | Pizza Toppings {{ order.toppings }} | Sub Addons {{ addons }} | Addons Price {{ addons_price }}
+      </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

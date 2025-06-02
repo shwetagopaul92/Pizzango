@@ -1,0 +1,10 @@
+{% extends "order/base.html" %}
+{% block title %}
+    Order Completed
+{% endblock %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<h1>Your order has been placed successfully! You would receive a confirmation mail shortly! Thank you!</h1>
+<a href="{% url 'logout' %}">Logout</a></li>
+{% endblock %}

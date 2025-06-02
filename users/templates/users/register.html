@@ -1,0 +1,15 @@
+{% extends "users/base.html" %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<h1>Register to use our online ordering system!</h1>
+<form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    First Name : <input name="first_name" type="text"/>
+    Last Name : <input name="last_name" type="text"/>
+    Email-address: <input name="email" type="text"/>
+    Username : <input name="username" type="text"/>
+    Password : <input name="password" type="password"/>
+    <input type="submit" value="Register"/>
+</form>
+{% endblock %}

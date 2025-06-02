@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <script>
+          function numberofitems() {
+              var x = document.getElementById("myList").getElementsByTagName("li").length
+              if (x >= 1 ){
+                r = confirm("Are the items and total price OK? Would you like to confirm the order?")
+                if (r == true) {
+                  alert("Go ahead and click Order")
+                }
+              }
+              else{
+                r = confirm("Sorry, you have no items in your cart yet!")
+              }
+          }
+      </script>
+      <title>Final Shopping Cart</title>
+    </head>
+    <body>
+      <p>You are now viewing your final shopping cart<br></p>
+      <ul id="myList">
+        {% for name in name %}
+          <li>
+            Item Name : {{ name }}<br><br>
+          </li>
+        {% endfor %}
+      </ul>
+      <p>Bill Total : ${{ total_bill }}</p>
+      <button onclick="numberofitems()">Take a small step ahead to verify your order !</button>
+      <form action="{% url 'orderstatusupdate' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Order"/>
+      </form>
+      <br><br>
+      <form action="{% url 'sendmail' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Recieve confirmation Email"/>
+      </form>
+      <br><br>
+      <a href="{% url 'category' %}">Go back to add more items to cart</a><br><br>
+      <a href="{% url 'logout' %}">Logout</a></li>
+    </body>
+</html>

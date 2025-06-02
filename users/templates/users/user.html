@@ -1,0 +1,11 @@
+{% extends "users/base.html" %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<h1>Welcome, {{ user.first_name }}</h1>
+<ul>
+    <li>Currently logged in as: {{ user.username }}</li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+</ul>
+<p> Want to look at our appetizing menu and start ordering? <a href="{% url 'menu' %}">Click here</a></p>
+{% endblock %}

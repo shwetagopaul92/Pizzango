@@ -1,0 +1,23 @@
+{% extends "order/base.html" %}
+{% block title %}
+    Shopping Cart
+{% endblock %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<p> You are now viewing your shopping cart with the item you picked! <br></p>
+Item Name : {{ name }} <br><br>
+Item Size : {{ size }} <br><br>
+Item Type : {{ type }} <br><br>
+Item Price : {{ price }} <br><br>
+Addons ( for subs only ) : {{ addons }} <br><br>
+Addons Price ( for subs only ) : {{ addons_price }} <br><br>
+Topping ( for pizzas only ) :
+{% for topping in topping %}
+  {{ topping }}
+{% endfor %}
+<br><br>
+<a href="{% url 'category' %}">Go back to add more items to cart</a><br><br>
+<a href="{% url 'order' %}">View Final Order</a>
+<br><br><a href="{% url 'logout' %}">Logout</a></li>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "users/base.html" %}
+{% block title %}
+    PIZZA
+{% endblock %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<div class="img">
+    <img src="{% static 'pizza2.jpg' %}" style="float:right">
+</div>
+<h1>Welcome to Pizzango</h1>
+<p>First time at Pizzango? Register here to get started with ordering the most delicious meal!<br></p>
+<form action="{% url 'register' %}" method="post">
+      {% csrf_token %}
+      First Name : <input name="first_name" type="text"/><br><br>
+      Last Name : <input name="last_name" type="text"/><br><br>
+      Email-address: <input name="email" type="text"/><br><br>
+      Username : <input name="username" type="text"/><br><br>
+      Password : <input name="password" type="password"/><br><br>
+      <input type="submit" value="Register"/><br><br>
+</form>
+<br>
+<p>If you have already registered with us before, <a href="{% url 'index' %}">LOGIN</a> to get started !</p>
+{% endblock %}
